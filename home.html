@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamisch Menu</title>
+</head>
+<body>
+
+  <nav id="menu-container"></nav>
+
+  <script>
+    // De JSON string
+    const jsonString = '[{"title": "home","url" : "/"},{"title" : "producten","url" : "/producten/"},{"title": "Over ons","url" : "/overons/"},{"title": "contact","url" : "/contact/"}]';
+
+    // Parse de JSON naar een JavaScript object
+    const menuItems = JSON.parse(jsonString);
+
+    // Maak het <ul> element
+    const ul = document.createElement('ul');
+
+    // Loop door elk menu item en voeg het toe aan de <ul>
+    menuItems.forEach(item => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = item.url;
+      a.textContent = item.title;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+
+    // Voeg de <ul> toe aan de container
+    document.getElementById('menu-container').appendChild(ul);
+  </script>
+
+</body>
+</html>
